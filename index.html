@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -228,7 +227,7 @@
             box-shadow: 0 0 10px rgba(255, 42, 42, 0.4);
         }
 
-        /* Container da Imagem */
+        /* Container da Imagem Estática */
         .product-image { 
             width: 100%; 
             height: 240px; 
@@ -245,38 +244,11 @@
             max-height: 100%; 
             object-fit: contain; 
             cursor: zoom-in; 
+            transition: transform 0.3s ease;
         }
-
-        /* Configurações do Carrossel */
-        .carousel-container { width: 100%; height: 100%; display: flex; position: relative; }
-        .carousel-track { display: flex; width: 100%; height: 100%; transition: transform 0.4s ease-in-out; }
-        .carousel-slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: white; }
-        
-        .carousel-btn { 
-            position: absolute; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            background: rgba(0, 0, 0, 0.7); 
-            color: white; 
-            border: 1px solid #333; 
-            width: 32px; 
-            height: 32px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 14px; 
-            z-index: 5; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
+        .product-image img:hover {
+            transform: scale(1.05);
         }
-        .carousel-btn:hover { background: var(--cor-vermelho); border-color: var(--cor-vermelho); }
-        .btn-prev { left: 8px; }
-        .btn-next { right: 8px; }
-
-        .carousel-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 5; }
-        .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.2); border-radius: 50%; cursor: pointer; border: 1px solid rgba(0,0,0,0.1); }
-        .dot.active { background: var(--cor-vermelho); width: 16px; border-radius: 4px; }
 
         /* Informações do Bloco de Texto */
         .product-info { 
@@ -296,7 +268,6 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            text-transform: capitalize;
         }
         .product-desc { 
             font-size: 0.88rem; 
@@ -437,24 +408,13 @@
         
         <div class="products-grid" id="productsGrid">
 
-            <div class="product-card" data-name="1-monitor gamer tela led">
+            <div class="product-card" data-name="1-monitor 317$ gamer pc tela">
                 <div class="number-badge">1</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/8Lh1b7h9/image.png" alt="1-monitor Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/ZzPnLcf4/image.png" alt="1-monitor Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/v6t0hjtk/no-mark-React-Native-snapshot-image-4.png" alt="1-monitor" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>1-monitor</h3>
+                    <h3>1-monitor 317$</h3>
                     <p class="product-desc">Excelente definição de imagem e fidelidade visual, ideal para complementar o seu setup gamer com alta qualidade.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -464,25 +424,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="2-monitor gamer pro tela">
+            <div class="product-card" data-name="2-monitor 441$ gamer pro tela">
                 <div class="number-badge">2</div>
-                <div class="tag-badge">Alta Taxa</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/FbtNtGvD/image.png" alt="2-monitor Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/gLC2VCr4/image.png" alt="2-monitor Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/s9G0msgx/no-mark-React-Native-snapshot-image-5.png" alt="2-monitor" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>2-monitor</h3>
+                    <h3>2-monitor 441$</h3>
                     <p class="product-desc">Tempo de resposta reduzido e alta fluidez, projetado para oferecer o melhor desempenho competitivo em jogos dinâmicos.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -492,24 +440,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="3-gabinete gamer rgb mid tower">
+            <div class="product-card" data-name="3-gabinete 180$ rgb mid tower">
                 <div class="number-badge">3</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/3yjmcsNk/image.png" alt="3-gabinete Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/MyGXVYSP/image.png" alt="3-gabinete Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/nsSZSh2L/no-mark-React-Native-snapshot-image-0.png" alt="3-gabinete" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>3-gabinete</h3>
+                    <h3>3-gabinete 180$</h3>
                     <p class="product-desc">Excelente espaço interno para componentes e fluxo de ar otimizado, ideal para setups modernos com iluminação RGB.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -519,24 +456,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="4-cadeira gamer ergonomica confort">
+            <div class="product-card" data-name="4-cadeira gamer 333$ ergonomica">
                 <div class="number-badge">4</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/VpB1vnFR/image.png" alt="4-cadeira gamer Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/B27k8XzM/image.png" alt="4-cadeira gamer Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/21B9NBFZ/no-mark-React-Native-snapshot-image-1.png" alt="4-cadeira gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>4-cadeira gamer</h3>
+                    <h3>4-cadeira gamer 333$</h3>
                     <p class="product-desc">Ergonomia e conforto avançados com regulagem para suportar longas sessões de jogos ou trabalho sem cansaço.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -546,24 +472,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="5-gabinete compact pc desktop">
+            <div class="product-card" data-name="5-gabinete 120$ compact pc">
                 <div class="number-badge">5</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/GfjfFXbf/image.png" alt="5-gabinete Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/N2chpyM4/image.png" alt="5-gabinete Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/C5YKQt7W/no-mark-React-Native-snapshot-image-6.png" alt="5-gabinete" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>5-gabinete</h3>
+                    <h3>5-gabinete 120$</h3>
                     <p class="product-desc">Design compacto e resistente, unindo eficiência estrutural com excelente custo-benefício para configurações cotidianas.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -573,24 +488,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="6-pc gamer computador completo cpu">
+            <div class="product-card" data-name="6-pc gamer 2319$ completo cpu">
                 <div class="number-badge">6</div>
                 <div class="product-image">
-                    <div class="carousel-container">
-                        <button class="carousel-btn btn-prev">&lt;</button>
-                        <div class="carousel-track">
-                            <div class="carousel-slide"><img src="https://i.ibb.co/cK3xJ7jb/image.png" alt="6-pc gamer Foto 1" class="zoomable-img"></div>
-                            <div class="carousel-slide"><img src="https://i.ibb.co/0R9WKGRw/image.png" alt="6-pc gamer Foto 2" class="zoomable-img"></div>
-                        </div>
-                        <button class="carousel-btn btn-next">&gt;</button>
-                        <div class="carousel-dots">
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
+                    <img src="https://i.ibb.co/mrXxqLTh/no-mark-React-Native-snapshot-image-7.png" alt="6-pc gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>6-pc gamer</h3>
+                    <h3>6-pc gamer 2319$</h3>
                     <p class="product-desc">Máquina de alto rendimento configurada e pronta para rodar seus eSports favoritos com taxas de FPS estáveis.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -600,13 +504,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="7-pc gamer completo monitor perifericos">
+            <div class="product-card" data-name="7-pc gamer completo 3136$ monitor setup">
                 <div class="number-badge">7</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/xSLfvSqX/image.png" alt="7-pc gamer completo" class="zoomable-img">
+                    <img src="https://i.ibb.co/93YDqKx6/no-mark-React-Native-snapshot-image-8.png" alt="7-pc gamer completo" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>7-pc gamer completo</h3>
+                    <h3>7-pc gamer completo 3136$</h3>
                     <p class="product-desc">Combo definitivo com monitor, CPU gamer e todos os periféricos inclusos na caixa. Conecte e comece a jogar.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -616,13 +520,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="8-processador ryzen 5600 amd cpu">
+            <div class="product-card" data-name="8-processador ryzen 5600 608$ amd cpu">
                 <div class="number-badge">8</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/ns4xKGv0/image.png" alt="8-processador Ryzen 5600" class="zoomable-img">
+                    <img src="https://i.ibb.co/6cRjKsK7/no-mark-React-Native-snapshot-image-9.png" alt="8-processador Ryzen 5600" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>8-processador Ryzen 5600</h3>
+                    <h3>8-processador Ryzen 5600 608$</h3>
                     <p class="product-desc">Uma das melhores opções do mercado para multi-tarefas, renderização acelerada e alta performance em jogos pesados.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -632,13 +536,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="9- processador intel5 intel core cpu">
+            <div class="product-card" data-name="9- processador intel5 715$ intel core cpu">
                 <div class="number-badge">9</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/tMD8RNwm/image.png" alt="9- processador intel5" class="zoomable-img">
+                    <img src="https://i.ibb.co/PGBBHys8/no-mark-React-Native-snapshot-image-10.png" alt="9- processador intel5" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>9- processador intel5</h3>
+                    <h3>9- processador intel5 715$</h3>
                     <p class="product-desc">Arquitetura avançada e estável com excelente desempenho single-core, ideal para upgrades em setups profissionais.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -648,13 +552,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="10-pc gamer desktop maquina">
+            <div class="product-card" data-name="10-pc gamer 2999$ desktop maquina">
                 <div class="number-badge">10</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/0VK44mfL/image.png" alt="10-pc gamer" class="zoomable-img">
+                    <img src="https://i.ibb.co/m5YpQLDW/no-mark-React-Native-snapshot-image-11.png" alt="10-pc gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>10-pc gamer</h3>
+                    <h3>10-pc gamer 2999$</h3>
                     <p class="product-desc">Configuração avançada construída para entregar excelente qualidade gráfica e estabilidade em resoluções altas.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -664,13 +568,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="11-pc gamer horizon custom desktop">
+            <div class="product-card" data-name="11-pc gamer 2742$ horizon custom desktop">
                 <div class="number-badge">11</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/1GgtPC43/image.png" alt="11-pc gamer" class="zoomable-img">
+                    <img src="https://i.ibb.co/V0803dP0/no-mark-React-Native-snapshot-image-12.png" alt="11-pc gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>11-pc gamer</h3>
+                    <h3>11-pc gamer 2742$</h3>
                     <p class="product-desc">Equilibrado com componentes de alta qualidade, garantindo fluidez total e suporte para expansões e upgrades futuros.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -680,14 +584,14 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="13-pc gamer premium high end rtx">
+            <div class="product-card" data-name="13-pc gamer 4843$ premium high end rtx">
                 <div class="number-badge">12</div>
                 <div class="tag-badge">High End</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/HTNqxxZv/image.png" alt="13-pc gamer" class="zoomable-img">
+                    <img src="https://i.ibb.co/CKRdvHfr/no-mark-React-Native-snapshot-image-13.png" alt="13-pc gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>13-pc gamer</h3>
+                    <h3>13-pc gamer 4843$</h3>
                     <p class="product-desc">Configuração bruta desenvolvida para lidar com streaming profissional e jogos em qualidade máxima sem engasgos.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -697,13 +601,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="14-placa de vídeo gpu dedicada">
+            <div class="product-card" data-name="14-placa de vídeo 1294$ gpu dedicada">
                 <div class="number-badge">13</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/qYMCcWJs/image.png" alt="14-placa de vídeo" class="zoomable-img">
+                    <img src="https://i.ibb.co/Kchm63JN/no-mark-React-Native-snapshot-image-14.png" alt="14-placa de vídeo" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>14-placa de vídeo</h3>
+                    <h3>14-placa de vídeo 1294$</h3>
                     <p class="product-desc">Aceleração gráfica de ponta para elevar os quadros por segundo das suas gameplays e otimizar renderizações 3D.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -713,13 +617,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="15-ddr8gb memoria ram desktop">
+            <div class="product-card" data-name="15-ddr8gb 296$ memoria ram desktop">
                 <div class="number-badge">14</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/HTbPN5wC/image.png" alt="15-ddr8gb" class="zoomable-img">
+                    <img src="https://i.ibb.co/Rk6MNDk5/no-mark-React-Native-snapshot-image-15.png" alt="15-ddr8gb" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>15-ddr8gb</h3>
+                    <h3>15-ddr8gb 296$</h3>
                     <p class="product-desc">Módulo estável de memória de 8GB, essencial para prevenir travamentos de sistema e otimizar o desempenho diário.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -729,13 +633,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="16-ddr8gb gamer ram rgb dissipador">
+            <div class="product-card" data-name="16-ddr8gb gamer 495$ ram rgb dissipador">
                 <div class="number-badge">15</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/MWM3Rfg/image.png" alt="16-ddr8gb gamer" class="zoomable-img">
+                    <img src="https://i.ibb.co/N6Cmh62t/no-mark-React-Native-snapshot-image-16.png" alt="16-ddr8gb gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>16-ddr8gb gamer</h3>
+                    <h3>16-ddr8gb gamer 495$</h3>
                     <p class="product-desc">Módulo gamer de alta velocidade equipado com dissipador de calor robusto para manter a estabilidade térmica sob stress.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -745,13 +649,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="17- kit periférico teclado mouse setup">
+            <div class="product-card" data-name="17- kit periférico 57$ teclado mouse setup">
                 <div class="number-badge">16</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/sdY4353V/image.png" alt="17- kit periférico" class="zoomable-img">
+                    <img src="https://i.ibb.co/DDm0jJyb/no-mark-React-Native-snapshot-image-17.png" alt="17- kit periférico" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>17- kit periférico</h3>
+                    <h3>17- kit periférico 57$</h3>
                     <p class="product-desc">Conjunto ergonômico básico de teclado e mouse, ideal para tarefas cotidianas, estudos ou estações de home office.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -761,13 +665,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="18-kit periférico pro gamer rgb">
+            <div class="product-card" data-name="18-kit periférico 135$ pro gamer rgb">
                 <div class="number-badge">17</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/FbtNtGvD/image.png" alt="18-kit periférico" class="zoomable-img">
+                    <img src="https://i.ibb.co/5WLBZzXM/Screenshot-2026-06-09-11-30-21-146-com-mercadolibre.jpg" alt="18-kit periférico" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>18-kit periférico</h3>
+                    <h3>18-kit periférico 135$</h3>
                     <p class="product-desc">Kit completo de alta performance com respostas táteis ágeis e iluminação neon customizada para sua gameplay.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -777,13 +681,13 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="19-pc gamer led rgb setup custom">
+            <div class="product-card" data-name="19-pc gamer 2751$ led rgb setup custom">
                 <div class="number-badge">18</div>
                 <div class="product-image">
-                    <img src="https://i.ibb.co/gLC2VCr4/image.png" alt="19-pc gamer" class="zoomable-img">
+                    <img src="https://i.ibb.co/6J899r4S/Screenshot-2026-06-09-11-30-39-579-com-mercadolibre.jpg" alt="19-pc gamer" class="zoomable-img">
                 </div>
                 <div class="product-info">
-                    <h3>19-pc gamer</h3>
+                    <h3>19-pc gamer 2751$</h3>
                     <p class="product-desc">Chassi gamer moderno com iluminação integrada e excelente vazão térmica para manter o seu setup resfriado.</p>
                     <div class="price-box">
                         <div class="price-label">Por apenas</div>
@@ -798,31 +702,6 @@
     </div>
 
     <script>
-        // --- GERENCIAMENTO DE CARROSSEIS ---
-        const carousels = document.querySelectorAll('.carousel-container');
-        carousels.forEach(container => {
-            const track = container.querySelector('.carousel-track');
-            const slides = container.querySelectorAll('.carousel-slide');
-            const prevBtn = container.querySelector('.btn-prev');
-            const nextBtn = container.querySelector('.btn-next');
-            const dots = container.querySelectorAll('.dot');
-            let index = 0;
-
-            function moveSlide(idx) {
-                if (idx < 0) idx = slides.length - 1;
-                if (idx >= slides.length) idx = 0;
-                index = idx;
-                track.style.transform = `translateX(-${index * 100}%)`;
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            }
-
-            prevBtn.addEventListener('click', (e) => { e.stopPropagation(); moveSlide(index - 1); });
-            nextBtn.addEventListener('click', (e) => { e.stopPropagation(); moveSlide(index + 1); });
-            dots.forEach((dot, i) => dot.addEventListener('click', (e) => { e.stopPropagation(); moveSlide(i); }));
-            
-            setInterval(() => moveSlide(index + 1), 5000); // Rotação autônoma
-        });
-
         // --- SISTEMA DE EXPANSÃO DE FOTOS (ZOOM) ---
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
@@ -864,3 +743,4 @@
     </script>
 </body>
 </html>
+
