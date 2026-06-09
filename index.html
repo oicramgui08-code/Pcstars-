@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,6 +15,7 @@
             --cor-amarelo: #ffcc00;    /* Amarelo Cyber */
             --borda: #22222a;
             --borda-hover: #3a3a4a;
+            --sidebar-width: 280px;
         }
 
         * { 
@@ -29,6 +29,7 @@
             background-color: var(--bg-principal); 
             color: var(--texto-principal); 
             padding-bottom: 60px; 
+            overflow-x: hidden;
         }
 
         /* --- NAVBAR --- */
@@ -48,6 +49,22 @@
             align-items: center; 
             justify-content: space-between; 
             gap: 20px; 
+        }
+
+        /* Botão Menu 3 Barras */
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--texto-principal);
+            font-size: 1.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+        .menu-toggle:hover {
+            color: var(--cor-amarelo);
         }
         
         /* Logo PCSTARS */
@@ -96,6 +113,79 @@
             transform: translateY(-50%); 
             font-size: 1.1rem; 
             color: var(--texto-secundario); 
+        }
+
+        /* --- SIDEBAR DE CATEGORIAS --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: calc(-1 * var(--sidebar-width));
+            width: var(--sidebar-width);
+            height: 100%;
+            background-color: #0d0d11;
+            z-index: 1500;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.8);
+            transition: left 0.3s ease;
+            padding: 30px 20px;
+            border-right: 1px solid var(--borda);
+        }
+        .sidebar.active {
+            left: 0;
+        }
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--borda);
+            padding-bottom: 15px;
+        }
+        .sidebar-header h2 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--cor-amarelo);
+        }
+        .sidebar-close {
+            background: none;
+            border: none;
+            color: var(--texto-secundario);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .sidebar-close:hover {
+            color: var(--cor-vermelho);
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-item {
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--texto-principal);
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .category-item:hover, .category-item.active {
+            background-color: #181822;
+            color: var(--cor-vermelho);
+            border-color: rgba(255, 42, 42, 0.3);
+            padding-left: 24px;
+        }
+
+        /* Overlay do Menu */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1400;
+            display: none;
+        }
+        .sidebar-overlay.active {
+            display: block;
         }
 
         /* --- HERO BANNER --- */
@@ -371,13 +461,31 @@
         }
         @media (max-width: 600px) {
             .navbar { padding: 15px; }
-            .brand { font-size: 1.4rem; }
+            .brand { font-size: 1.2rem; }
             .products-grid { grid-template-columns: 1fr; gap: 20px; }
             .hero-text h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="sidebar" id="sidebarMenu">
+        <div class="sidebar-header">
+            <h2>Categorias</h2>
+            <button class="sidebar-close" id="sidebarClose">&times;</button>
+        </div>
+        <ul class="category-list">
+            <li class="category-item active" data-category="all">Todos os Produtos</li>
+            <li class="category-item" data-category="pc gamer">PC Gamer</li>
+            <li class="category-item" data-category="monitor">Monitores</li>
+            <li class="category-item" data-category="kit periferico">Kits Periféricos</li>
+            <li class="category-item" data-category="ssd">Armazenamento SSD</li>
+            <li class="category-item" data-category="ddr">Memória DDR (RAM)</li>
+            <li class="category-item" data-category="outros">Outros Hardwares</li>
+        </ul>
+    </div>
 
     <div class="image-modal" id="imageModal">
         <span class="image-modal-close" id="modalClose">&times;</span>
@@ -386,9 +494,10 @@
 
     <div class="navbar">
         <div class="navbar-container">
+            <button class="menu-toggle" id="sidebarToggle">☰</button>
             <div class="brand">PC<span>STARS</span><label>★</label></div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Buscar hardware, monitores ou pc gamer...">
+                <input type="text" id="searchInput" placeholder="Buscar por palavra-chave ou categoria...">
                 <span class="search-icon">🔍</span>
             </div>
         </div>
@@ -405,11 +514,11 @@
     </div>
 
     <div class="section-container">
-        <div class="section-title">Catálogo <span>Hardware & Configurações</span></div>
+        <div class="section-title">Catálogo <span id="categoryTitle">Hardware & Configurações</span></div>
         
         <div class="products-grid" id="productsGrid">
 
-            <div class="product-card" data-name="1-monitor 317$ gamer pc tela">
+            <div class="product-card" data-category="monitor" data-name="1-monitor 317$ gamer pc tela">
                 <div class="number-badge">1</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/v6t0hjtk/no-mark-React-Native-snapshot-image-4.png" alt="1-monitor" class="zoomable-img">
@@ -425,7 +534,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="2-monitor 441$ gamer pro tela">
+            <div class="product-card" data-category="monitor" data-name="2-monitor 441$ gamer pro tela">
                 <div class="number-badge">2</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/C5YKQt7W/no-mark-React-Native-snapshot-image-6.png" alt="2-monitor" class="zoomable-img">
@@ -441,7 +550,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="3-gabinete 180$ rgb mid tower">
+            <div class="product-card" data-category="outros" data-name="3-gabinete 180$ rgb mid tower">
                 <div class="number-badge">3</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/93YDqKx6/no-mark-React-Native-snapshot-image-8.png" alt="3-gabinete" class="zoomable-img">
@@ -457,7 +566,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="4-cadeira gamer 333$ ergonomica">
+            <div class="product-card" data-category="outros" data-name="4-cadeira gamer 333$ ergonomica">
                 <div class="number-badge">4</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/PGBBHys8/no-mark-React-Native-snapshot-image-10.png" alt="4-cadeira gamer" class="zoomable-img">
@@ -473,7 +582,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="5-gabinete 120$ compact pc">
+            <div class="product-card" data-category="outros" data-name="5-gabinete 120$ compact pc">
                 <div class="number-badge">5</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/V0803dP0/no-mark-React-Native-snapshot-image-12.png" alt="5-gabinete" class="zoomable-img">
@@ -489,7 +598,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="6-pc gamer 2319$ completo cpu">
+            <div class="product-card" data-category="pc gamer" data-name="6-pc gamer 2319$ completo cpu">
                 <div class="number-badge">6</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/Kchm63JN/no-mark-React-Native-snapshot-image-14.png" alt="6-pc gamer" class="zoomable-img">
@@ -505,7 +614,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="7-pc gamer completo 3136$ monitor setup">
+            <div class="product-card" data-category="pc gamer" data-name="7-pc gamer completo 3136$ monitor setup">
                 <div class="number-badge">7</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/Rk6MNDk5/no-mark-React-Native-snapshot-image-15.png" alt="7-pc gamer completo" class="zoomable-img">
@@ -521,7 +630,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="8-processador ryzen 5600 608$ amd cpu">
+            <div class="product-card" data-category="outros" data-name="8-processador ryzen 5600 608$ amd cpu">
                 <div class="number-badge">8</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/N6Cmh62t/no-mark-React-Native-snapshot-image-16.png" alt="8-processador Ryzen 5600" class="zoomable-img">
@@ -537,7 +646,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="9- processador intel5 715$ intel core cpu">
+            <div class="product-card" data-category="outros" data-name="9- processador intel5 715$ intel core cpu">
                 <div class="number-badge">9</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/DDm0jJyb/no-mark-React-Native-snapshot-image-17.png" alt="9- processador intel5" class="zoomable-img">
@@ -553,7 +662,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="10-pc gamer 2999$ desktop maquina">
+            <div class="product-card" data-category="pc gamer" data-name="10-pc gamer 2999$ desktop maquina">
                 <div class="number-badge">10</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/5WLBZzXM/Screenshot-2026-06-09-11-30-21-146-com-mercadolibre.jpg" alt="10-pc gamer" class="zoomable-img">
@@ -569,7 +678,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="11-pc gamer 2742$ horizon custom desktop">
+            <div class="product-card" data-category="pc gamer" data-name="11-pc gamer 2742$ horizon custom desktop">
                 <div class="number-badge">11</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/6J899r4S/Screenshot-2026-06-09-11-30-39-579-com-mercadolibre.jpg" alt="11-pc gamer" class="zoomable-img">
@@ -585,7 +694,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="13-pc gamer 4843$ premium high end rtx">
+            <div class="product-card" data-category="pc gamer" data-name="13-pc gamer 4843$ premium high end rtx">
                 <div class="number-badge">12</div>
                 <div class="tag-badge">High End</div>
                 <div class="product-image">
@@ -602,7 +711,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="14-placa de vídeo 1294$ gpu dedicada">
+            <div class="product-card" data-category="outros" data-name="14-placa de vídeo 1294$ gpu dedicada">
                 <div class="number-badge">13</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/r2bHcc9P/Screenshot-2026-06-09-11-31-10-595-com-mercadolibre.jpg" alt="14-placa de vídeo" class="zoomable-img">
@@ -618,7 +727,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="15-ddr8gb 296$ memoria ram desktop">
+            <div class="product-card" data-category="ddr" data-name="15-ddr8gb 296$ memoria ram desktop">
                 <div class="number-badge">14</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/whN7PwcW/Screenshot-2026-06-09-11-31-25-795-com-mercadolibre.jpg" alt="15-ddr8gb" class="zoomable-img">
@@ -634,7 +743,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="16-ddr8gb gamer 495$ ram rgb dissipador">
+            <div class="product-card" data-category="ddr" data-name="16-ddr8gb gamer 495$ ram rgb dissipador">
                 <div class="number-badge">15</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/JjGpxD6q/Screenshot-2026-06-09-11-31-47-302-com-mercadolibre.jpg" alt="16-ddr8gb gamer" class="zoomable-img">
@@ -650,7 +759,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="17- kit periférico 57$ teclado mouse setup">
+            <div class="product-card" data-category="kit periferico" data-name="17- kit periférico 57$ teclado mouse setup">
                 <div class="number-badge">16</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/S4CgvQv3/Screenshot-2026-06-09-11-31-58-703-com-mercadolibre.jpg" alt="17- kit periférico" class="zoomable-img">
@@ -666,7 +775,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="18-kit periférico 135$ pro gamer rgb">
+            <div class="product-card" data-category="kit periferico" data-name="18-kit periférico 135$ pro gamer rgb">
                 <div class="number-badge">17</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/cMD7Nwy/Screenshot-2026-06-09-11-32-09-533-com-mercadolibre.jpg" alt="18-kit periférico" class="zoomable-img">
@@ -682,7 +791,7 @@
                 </div>
             </div>
 
-            <div class="product-card" data-name="19-pc gamer 2751$ led rgb setup custom">
+            <div class="product-card" data-category="pc gamer" data-name="19-pc gamer 2751$ led rgb setup custom">
                 <div class="number-badge">18</div>
                 <div class="product-image">
                     <img src="https://i.ibb.co/nsSZSh2L/no-mark-React-Native-snapshot-image-0.png" alt="19-pc gamer" class="zoomable-img">
@@ -698,11 +807,158 @@
                 </div>
             </div>
 
+            <div class="product-card" data-category="ssd" data-name="ssd 256 gb 76$ armazenamento disco de estado solido">
+                <div class="number-badge">19</div>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/HpHhdhnf/no-mark-React-Native-snapshot-image-18.png" alt="Ssd 256 gb" class="zoomable-img">
+                </div>
+                <div class="product-info">
+                    <h3>Ssd 256 gb - R$ 76</h3>
+                    <p class="product-desc">Inicialização ultrarrápida do sistema operacional e carregamento instantâneo de arquivos com excelente custo-benefício.</p>
+                    <div class="price-box">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 76,00</div>
+                        <a href="https://s.shopee.com.br/3qKbplDL2O" target="_blank" class="btn-action">Ver Oferta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="ssd" data-name="ssd 256 gb 296$ armazenamento de alta velocidade">
+                <div class="number-badge">20</div>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/B2LBCHPq/no-mark-React-Native-snapshot-image-21.png" alt="Ssd 256 gb" class="zoomable-img">
+                </div>
+                <div class="product-info">
+                    <h3>Ssd 256 gb - R$ 296</h3>
+                    <p class="product-desc">Armazenamento de alto rendimento com taxas superiores de leitura e escrita para máxima performance sob stress.</p>
+                    <div class="price-box">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 296,00</div>
+                        <a href="https://s.shopee.com.br/3g1BdSDyNN" target="_blank" class="btn-action">Ver Oferta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="ssd" data-name="ssd 960gb 722$ armazenamento expansao interno">
+                <div class="number-badge">21</div>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/v6x1xgJC/no-mark-React-Native-snapshot-image-20.png" alt="Ssd 960gb" class="zoomable-img">
+                </div>
+                <div class="product-info">
+                    <h3>Ssd 960gb - R$ 722</h3>
+                    <p class="product-desc">Amplo espaço interno ideal para instalar múltiplos jogos AAA e carregar seus mapas pesados sem engasgos.</p>
+                    <div class="price-box">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 722,00</div>
+                        <a href="https://s.shopee.com.br/3VhlR9EbiM" target="_blank" class="btn-action">Ver Oferta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="ssd" data-name="ssd 128gb 115$ armazenamento basico rapido">
+                <div class="number-badge">22</div>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/RG58cVcg/no-mark-React-Native-snapshot-image-22.png" alt="Ssd 128gb" class="zoomable-img">
+                </div>
+                <div class="product-info">
+                    <h3>Ssd 128gb - R$ 115</h3>
+                    <p class="product-desc">A melhor alternativa de upgrade para reviver PCs de estudos ou escritório com velocidade e estabilidade líquida.</p>
+                    <div class="price-box">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 115,00</div>
+                        <a href="https://s.shopee.com.br/3LOLEqFF3L" target="_blank" class="btn-action">Ver Oferta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="ssd" data-name="ssd 256 gb 526$ premium armazenamento nvme">
+                <div class="number-badge">23</div>
+                <div class="product-image">
+                    <img src="https://i.ibb.co/1Jp7fSzT/no-mark-React-Native-snapshot-image-23.png" alt="Ssd 256 gb" class="zoomable-img">
+                </div>
+                <div class="product-info">
+                    <h3>Ssd 256 gb - R$ 526</h3>
+                    <p class="product-desc">Modelo Premium de alta durabilidade (TBW) projetado para fluxos profissionais constantes de gravação de dados.</p>
+                    <div class="price-box">
+                        <div class="price-label">Por apenas</div>
+                        <div class="price-value">R$ 526,00</div>
+                        <a href="https://s.shopee.com.br/4LGsQq3Tbp" target="_blank" class="btn-action">Ver Oferta</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="no-results" id="noResults">Nenhum hardware ou acessório encontrado. 😕</div>
         </div>
     </div>
 
     <script>
+        // --- GERENCIAMENTO DA BARRA LATERAL (SIDEBAR) ---
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const categoryItems = document.querySelectorAll('.category-item');
+        const categoryTitle = document.getElementById('categoryTitle');
+        const cards = document.querySelectorAll('.product-card');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+
+        let activeCategory = 'all';
+
+        function abrirMenu() {
+            sidebarMenu.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        }
+
+        function fecharMenu() {
+            sidebarMenu.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        sidebarToggle.addEventListener('click', abrirMenu);
+        sidebarClose.addEventListener('click', fecharMenu);
+        sidebarOverlay.addEventListener('click', fecharMenu);
+
+        // --- SISTEMA INTEGRA DE FILTRO POR CATEGORIA E BUSCA ---
+        function filtrarProdutos() {
+            const query = searchInput.value.toLowerCase().trim();
+            let matches = 0;
+
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardName = card.getAttribute('data-name').toLowerCase();
+
+                const pertenceACategoria = (activeCategory === 'all' || cardCategory === activeCategory);
+                const bateComBusca = (cardName.includes(query));
+
+                if (pertenceACategoria && bateComBusca) {
+                    card.style.display = 'flex';
+                    matches++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = matches > 0 ? 'none' : 'block';
+        }
+
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Mudar classe ativa visualmente
+                categoryItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Atualizar categoria e título principal
+                activeCategory = item.getAttribute('data-category');
+                categoryTitle.textContent = item.textContent;
+
+                filtrarProdutos();
+                fecharMenu();
+            });
+        });
+
+        searchInput.addEventListener('input', filtrarProdutos);
+
         // --- SISTEMA DE EXPANSÃO DE FOTOS (ZOOM) ---
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
@@ -719,28 +975,7 @@
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target === modalClose) modal.classList.remove('active');
         });
-
-        // --- BUSCA DINÂMICA EM TEMPO REAL ---
-        const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('.product-card');
-        const noResults = document.getElementById('noResults');
-
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase().trim();
-            let matches = 0;
-
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name');
-                if (name && name.includes(query)) {
-                    card.style.display = 'flex';
-                    matches++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            noResults.style.display = matches > 0 ? 'none' : 'block';
-        });
     </script>
 </body>
 </html>
+
