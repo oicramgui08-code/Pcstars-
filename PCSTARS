@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TOP PC GAMER 2026</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0d0d0d;
+color:white;
+}
+
+header{
+background:linear-gradient(90deg,#ff0000,#ffae00);
+padding:30px;
+text-align:center;
+}
+
+header h1{
+font-size:3rem;
+color:white;
+text-shadow:0 0 15px black;
+}
+
+header p{
+margin-top:10px;
+font-size:1.1rem;
+}
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:40px;
+}
+
+.card{
+background:#171717;
+border:2px solid #ff0000;
+border-radius:15px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 0 15px rgba(255,0,0,0.3);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(255,174,0,0.8);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.info{
+padding:20px;
+}
+
+.info h2{
+font-size:1.1rem;
+margin-bottom:10px;
+color:#ffae00;
+}
+
+.preco{
+font-size:1.6rem;
+font-weight:bold;
+color:#00ff88;
+margin-bottom:15px;
+}
+
+.botao{
+display:block;
+text-align:center;
+background:#ff0000;
+color:white;
+padding:12px;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.botao:hover{
+background:#ffae00;
+color:black;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#111;
+margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🔥 TOP PC GAMER 2026 🔥</h1>
+<p>Os melhores produtos gamer com os melhores preços</p>
+</header>
+
+<section class="produtos">
+
+<!-- PRODUTO 1 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_1">
+<div class="info">
+<h2>Monitor Gamer</h2>
+<div class="preco">R$ 317</div>
+<a class="botao" href="https://s.shopee.com.br/7KuThdLCkH" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 2 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_2">
+<div class="info">
+<h2>Monitor Gamer</h2>
+<div class="preco">R$ 441</div>
+<a class="botao" href="https://s.shopee.com.br/AKY5HNPzQq" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 3 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_3">
+<div class="info">
+<h2>Gabinete Gamer</h2>
+<div class="preco">R$ 180</div>
+<a class="botao" href="https://s.shopee.com.br/7fXK7Y94pp" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 4 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_4">
+<div class="info">
+<h2>Cadeira Gamer</h2>
+<div class="preco">R$ 333</div>
+<a class="botao" href="https://s.shopee.com.br/7VDtvF9iAo" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 5 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_5">
+<div class="info">
+<h2>Gabinete Gamer</h2>
+<div class="preco">R$ 120</div>
+<a class="botao" href="https://s.shopee.com.br/7KuTiwALVn" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 6 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_6">
+<div class="info">
+<h2>PC Gamer</h2>
+<div class="preco">R$ 2.319</div>
+<a class="botao" href="https://s.shopee.com.br/5q5fwBG3YW" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 7 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_7">
+<div class="info">
+<h2>PC Gamer Completo</h2>
+<div class="preco">R$ 3.136</div>
+<a class="botao" href="https://s.shopee.com.br/5fmFjsGgtV" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 8 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_8">
+<div class="info">
+<h2>Ryzen 5 5600</h2>
+<div class="preco">R$ 608</div>
+<a class="botao" href="https://s.shopee.com.br/7pqkJu2y93" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 9 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_9">
+<div class="info">
+<h2>Intel Core i5</h2>
+<div class="preco">R$ 715</div>
+<a class="botao" href="https://s.shopee.com.br/7KuTiz4s9y" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 10 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_10">
+<div class="info">
+<h2>PC Gamer</h2>
+<div class="preco">R$ 2.999</div>
+<a class="botao" href="https://s.shopee.com.br/7VDtvI4Ep1" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 11 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_11">
+<div class="info">
+<h2>PC Gamer</h2>
+<div class="preco">R$ 2.742</div>
+<a class="botao" href="https://meli.la/2Cthvax" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 12 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_12">
+<div class="info">
+<h2>PC Gamer</h2>
+<div class="preco">R$ 4.843</div>
+<a class="botao" href="https://meli.la/1LYGtPZ" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 13 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_13">
+<div class="info">
+<h2>Placa de Vídeo</h2>
+<div class="preco">R$ 1.294</div>
+<a class="botao" href="https://meli.la/2WTnxk6" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 14 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_14">
+<div class="info">
+<h2>Memória DDR4 8GB</h2>
+<div class="preco">R$ 296</div>
+<a class="botao" href="https://meli.la/27TXwjn" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 15 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_15">
+<div class="info">
+<h2>Memória Gamer 8GB</h2>
+<div class="preco">R$ 495</div>
+<a class="botao" href="https://meli.la/2qdpgoy" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 16 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_16">
+<div class="info">
+<h2>Kit Periférico Gamer</h2>
+<div class="preco">R$ 57</div>
+<a class="botao" href="https://meli.la/2zttpJj" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 17 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_17">
+<div class="info">
+<h2>Kit Periférico Premium</h2>
+<div class="preco">R$ 135</div>
+<a class="botao" href="https://meli.la/1wkTDYH" target="_blank">Comprar</a>
+</div>
+</div>
+
+<!-- PRODUTO 18 -->
+<div class="card">
+<img src="LINK_DA_IMAGEM_18">
+<div class="info">
+<h2>PC Gamer</h2>
+<div class="preco">R$ 2.751</div>
+<a class="botao" href="https://meli.la/1FDwRZg" target="_blank">Comprar</a>
+</div>
+</div>
+
+</section>
+
+<footer>
+© 2026 Top PC Gamer - Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
